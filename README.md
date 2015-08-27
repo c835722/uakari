@@ -14,7 +14,7 @@ $ npm install --save uakari
 ```js
 var uakari = require('uakari');
 
-uakari('Rainbow');
+semver = uakari.version
 ```
 
 ## License
