@@ -30,4 +30,3 @@ MIT © [c835722]()
 [daviddm-url]: https://david-dm.org/c835722/uakari
 [coveralls-image]: https://coveralls.io/repos/c835722/uakari/badge.svg
 [coveralls-url]: https://coveralls.io/r/c835722/uakari
-
