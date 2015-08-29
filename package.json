@@ -1,7 +1,7 @@
 {
   "name": "uakari",
   "description": "Semantic Versioning Utility",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "homepage": "",
   "repository": {
     "type": "git",
@@ -38,13 +38,11 @@
     "gulp-istanbul": "^0.9.0",
     "gulp-mocha": "^2.0.0",
     "gulp-nsp": "^0.4.5",
-    "gulp-plumber": "^1.0.0",
-    "semantic-release": "^4.3.4"
+    "gulp-plumber": "^1.0.0"
   },
   "scripts": {
     "prepublish": "gulp prepublish",
-    "test": "gulp",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+    "test": "gulp"
   },
   "license": "MIT"
 }
