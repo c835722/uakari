@@ -1,6 +1,7 @@
 {
   "name": "uakari",
   "description": "Semantic Versioning Utility",
+  "version": "0.0.8",  
   "homepage": "",
   "repository": {
     "type": "git",
