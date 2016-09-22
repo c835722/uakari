@@ -1,19 +1,35 @@
-node {
-    // uncomment these 2 lines and edit the name 'node-4.4.5' according to what you choose in configuration
-    def nodeHome = tool name: 'nodejs-latest', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallation'
-    env.PATH = "${nodeHome}/bin:${env.PATH}"
+#!/usr/bin/env groovy​
 
-    stage 'check environment'
+def nodeHome = tool name: 'nodejs-latest', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallation'
+env.PATH = "${nodeHome}/bin:${env.PATH}"
+
+stage "environment"
+node {
+    sh "uname -a"
     sh "node -v"
     sh "npm -v"
+    echo env.PATH
+    echo currentBuild.result
+    echo currentBuild.displayName
+    echo currentBuild.description
+}
 
-    stage 'Checkout'
-   // Get some code from a GitHub repository
-    git credentialsId: '7cd2b0e3-0594-4022-8860-45c20c2b77dd', url: 'https://github.com/c835722/uakari'
+stage "checkout"
+node {
+    checkout scm
+}
 
-    stage 'Build'
+stage "build"
+node {
     sh "npm install"
+}
 
-    stage 'Test'
+stage "test"
+node {
+    sh "npm test"
+}
+
+stage name: "perf-test", concurrency: 3
+node {
     sh "npm test"
 }
