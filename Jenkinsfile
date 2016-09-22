@@ -20,7 +20,7 @@ node {
 
     stage "test"
     sh "npm test"
-    publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'uakari/coverage/lcov-report', reportFiles: 'index.html', reportName: 'HTML Report'])
+    publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'coverage/lcov-report', reportFiles: 'index.html', reportName: 'Coverage Report'])
 }
 
 stage name: "perf-test", concurrency: 3
