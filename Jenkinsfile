@@ -12,20 +12,14 @@ node {
     echo currentBuild.result
     echo currentBuild.displayName
     echo currentBuild.description
-}
 
-stage "checkout"
-node {
+    stage "checkout"
     checkout scm
-}
 
-stage "build"
-node {
+    stage "build"
     sh "npm install"
-}
 
-stage "test"
-node {
+    stage "test"
     sh "npm test"
 }
 
