@@ -1,10 +1,9 @@
 #!/usr/bin/env groovy​
 
-def nodeHome = tool name: 'nodejs-latest', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallation'
-env.PATH = "${nodeHome}/bin:${env.PATH}"
-
-stage "environment"
 node {
+    stage "environment"
+    def nodeHome = tool name: 'nodejs-latest', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallation'
+    env.PATH = "${nodeHome}/bin:${env.PATH}"
     sh "uname -a"
     sh "node -v"
     sh "npm -v"
