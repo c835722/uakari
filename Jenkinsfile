@@ -1,6 +1,7 @@
 #!/usr/bin/env groovy​
 
 node {
+    //Build
     stage "environment"
     def nodeHome = tool name: 'nodejs-latest', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallation'
     env.PATH = "${nodeHome}/bin:${env.PATH}"
@@ -17,13 +18,15 @@ node {
 
     stage "build"
     sh "npm install"
-
+}
+node {
+    //Test
     stage "test"
     sh "npm test"
     publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'coverage/lcov-report', reportFiles: 'index.html', reportName: 'Coverage Report'])
-}
 
-stage name: "perf-test", concurrency: 3
+    stage name: "perf-test", concurrency: 3
+}
 node {
-    sh "npm test"
+    //Deploy
 }
