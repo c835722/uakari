@@ -1,5 +1,11 @@
 #!/usr/bin/env groovy​
 
+properties([
+    pipelineTriggers([
+      [$class: "GitHubPushTrigger"]
+    ])
+  ])
+
 node {
     //Build
     stage "environment"
@@ -9,7 +15,9 @@ node {
     sh "node -v"
     sh "npm -v"
     echo env.PATH
-    echo currentBuild.result
+    echo env.GIT_TAG_NAME
+    echo env.GIT_TAG_MESSAGE
+    echo env.BUILD_TAG
     echo currentBuild.displayName
     echo currentBuild.description
 
